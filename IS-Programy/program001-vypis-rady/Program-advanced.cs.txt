@@ -1,0 +1,39 @@
+// Program 001 – nadstavba: validace vstupu + automatický směr řady (vzestupně i sestupně)
+//
+// Vylepšení: když je first > last, program řadu vypíše sestupně (např. 10, 7, 4, 1),
+// takže uživatel nemusí zadávat záporný krok. Krok se zadává vždy jako kladné číslo.
+// Proč: původní verze pro first > last nevypsala nic, což působí jako chyba; kromě toho
+// by špatný vstup (text, step = 0) program shodil nebo zacyklil.
+
+// Pomocná funkce: opakuje dotaz, dokud uživatel nezadá celé číslo (TryParse nehází výjimku).
+static int ReadInt(string name)
+{
+    while (true)
+    {
+        Console.Write($"{name} = ");
+        if (int.TryParse(Console.ReadLine(), out int value))
+        {
+            return value;
+        }
+        Console.WriteLine("Chyba: zadejte celé číslo.");
+    }
+}
+
+int first = ReadInt("first");
+int last = ReadInt("last");
+
+// step = 0 by způsobil nekonečný cyklus; záporný krok nepovolujeme, směr určují first a last.
+int step;
+while ((step = ReadInt("step")) <= 0)
+{
+    Console.WriteLine("Chyba: krok musí být kladný (směr se určí automaticky).");
+}
+
+// Směr: +1 vzestupně, -1 sestupně. Skutečný přírůstek je direction * step.
+int direction = first <= last ? 1 : -1;
+
+// long: součet i + step by u hodnot blízko int.MaxValue přetekl a cyklus by se nikdy neukončil.
+for (long i = first; direction == 1 ? i <= last : i >= last; i += (long)direction * step)
+{
+    Console.WriteLine(i);
+}

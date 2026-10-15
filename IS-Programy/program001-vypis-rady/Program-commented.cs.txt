@@ -1,0 +1,25 @@
+// Program 001 – výpis řady čísel (verze s podrobnými komentáři)
+
+// Výzva bez odřádkování (Write, ne WriteLine), aby uživatel psal hodnotu hned za název proměnné.
+Console.Write("first = ");
+// ReadLine vrací string? (null při konci vstupu, např. Ctrl+D); "!" říká kompilátoru, že null neočekáváme.
+// int.Parse převádí text na číslo, aby s ním šlo počítat a porovnávat (text "10" < "9" by dopadlo špatně).
+// Pozor: tato základní verze při nečíselném vstupu spadne na výjimku – to řeší až verze advanced.
+int first = int.Parse(Console.ReadLine()!);
+
+// Horní mez řady; hodnoty větší než last už se nevypisují.
+Console.Write("last = ");
+int last = int.Parse(Console.ReadLine()!);
+
+// Krok mezi sousedními čísly. Musí být kladný, jinak by se řada nikdy nepřiblížila k last.
+Console.Write("step = ");
+int step = int.Parse(Console.ReadLine()!);
+
+// for hodí, protože známe start (first), podmínku konce (i <= last) i přírůstek (step).
+// Podmínka <= zajistí, že last se vypíše, pokud do řady "trefí" (např. 1,2,3 pro last = 3).
+// "i += step" místo "i++" – řada neroste o 1, ale o zadaný krok.
+for (int i = first; i <= last; i += step)
+{
+    // Každé číslo na samostatný řádek, přesně jako ve vzorovém výstupu zadání.
+    Console.WriteLine(i);
+}
