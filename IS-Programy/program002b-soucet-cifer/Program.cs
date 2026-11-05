@@ -21,5 +21,7 @@ foreach (char c in digits)
     product *= digit;
 }
 
-Console.WriteLine($"Součet cifer: {sum}");
+Console.WriteLine(new string('=', 40));
+Console.WriteLine($"Ciferný součet čísla {number} je {sum}");
+Console.WriteLine(new string('=', 40));
 Console.WriteLine($"Součin cifer: {product}");
