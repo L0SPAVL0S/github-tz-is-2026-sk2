@@ -27,4 +27,6 @@ while (rest > 0)
 Console.WriteLine(new string('=', 40));
 Console.WriteLine($"Ciferný součet čísla {number} je {sum}");
 Console.WriteLine(new string('=', 40));
-Console.WriteLine($"Součin cifer: {product}");
+Console.WriteLine(new string('=', 40));
+Console.WriteLine($"Ciferný součin čísla {number} je {product}");
+Console.WriteLine(new string('=', 40));
